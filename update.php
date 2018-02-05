@@ -1,3 +1,4 @@
+<?php
 if(isset($_POST['update_blog'])){
 	
 	$blog_title=$_POST['blog_title'];
@@ -28,3 +29,4 @@ if(isset($_POST['update_blog'])){
           	header('location:profile');
 	
 }
+?>
