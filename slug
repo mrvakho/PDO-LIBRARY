@@ -1,0 +1,13 @@
+<?php
+$text2="ვებ გვერდის სათაური გამოიყურება ასე";
+
+ function slugify($str) {
+    $search = array('ა', 'ბ', 'გ', 'დ', 'ე', 'ვ', 'ზ', 'თ', 'ი', 'კ', 'ლ', 'მ', 'ნ', 'ო', 'პ', 'ჟ', 'რ', 'ს', 'ტ', 'უ', 'ფ', 'ქ', 'ღ', 'ყ', 'შ', 'ჩ', 'ც', 'ძ', 'წ', 'ჭ', 'ხ', 'ჯ', 'ჰ');
+    $replace =array('a', 'b', 'g', 'd', 'e', 'v', 'z', 't', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'j', 'r', 's', 't', 'u', 'f', 'q', 'gh', 'y', 'sh', 'C', 'c', 'z', 'w', 'W', 'x', 'j', 'h');
+    $str = str_ireplace($search, $replace, strtolower(trim($str)));
+    $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
+    $str = str_replace(' ', '-', $str);
+    return preg_replace('/\-{2,}/', '-', $str);
+}
+echo $slug=slugify($text2);
+?>
