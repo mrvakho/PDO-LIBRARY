@@ -1,0 +1,45 @@
+<table class="table table-hover">
+                              <thead>
+                                                    <tr>
+                                                        <th> # </th>
+                                                        <th> სათაური </th>
+                                                        <th> სტატუსი </th>
+                                                        <th> თარიღი </th>
+                                                        <th> ქმედება </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                        <?php
+                                                        try{
+                                                            //PARAM INT
+                                                                    $db=getDB();
+                                                                    $NEWS_QUERY = $db->prepare("SELECT * FROM news order by news_date, news_id DESC"); 
+                                                                    $NEWS_QUERY->bindParam("id", $library_id, PDO::PARAM_INT);
+                                                                    $NEWS_QUERY->execute();
+                                                                   while( $NEWS_QUERY_ROW = $NEWS_QUERY->fetch()){
+                                                           ?>
+                                                    <tr>
+                                                        <td> <?php echo $NEWS_QUERY_ROW['news_id']; ?> </td>
+                                                        <td> <?php echo $NEWS_QUERY_ROW['news_title_ge']; ?> </td>
+                                                       
+                                                        <td>  
+                                                          <?php if($NEWS_QUERY_ROW['news_public']=='1'){ ?>
+                                                            <span class="label label-sm label-success"> საჯარო </span> 
+                                                          <?php }else{ ?>
+                                                            <span class="label label-sm label-danger"> დამალული </span> 
+                                                          <?php } ?>
+                                                        </td>
+                                                        <td> <?php echo $NEWS_QUERY_ROW['news_date']; ?> </td>
+                                                        <td>
+                                                            <a href='<?php echo $BASE_URL;?>admin/index.php?act=news_edit&id=<?php echo $NEWS_QUERY_ROW['news_id']; ?>'>რედაქტირება</a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php 
+                                                }
+                                                }
+                                                catch(PDOException $e) {
+                                                echo '{"error":{"text":'. $e->getMessage() .'}}';
+                                                }
+                                                   ?>
+                                                </tbody>
+                                                </table>
