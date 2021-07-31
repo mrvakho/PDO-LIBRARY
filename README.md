@@ -8,7 +8,7 @@ PDO Library
  </head>
   <body>
     <h1><font size='2'><b>PDO ბიბლიოთეკები</b></font></h1>
-    <h1><font size='2'><b>ვერსია განკუთვნილია PHP 5.6+ ვერსიაზე</b></font></h1>
+    <h1><font size='2'><b>ვერსია განკუთვნილია PHP >5.6  <7.4 ვერსიაზე</b></font></h1>
     <h1><font size='2'><b>ვერსია 1.0</b></font></h1>
    
   </body>
